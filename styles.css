@@ -1,0 +1,456 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --amethyst: #9b5de5;
+  --brilliant-rose: #f15bb5;
+  --maize: #fee440;
+  --deep-sky-blue: #00bbf9;
+  --aquamarine: #00f5d4;
+  --dark-bg: #0a0a0f;
+  --dark-card: #1a1a24;
+  --light-bg: #f8f9fa;
+  --light-card: #ffffff;
+  --text-dark: #ffffff;
+  --text-light: #1a1a24;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+  background: var(--light-bg);
+  color: var(--text-light);
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--dark-card);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.light-mode .theme-toggle {
+  background: var(--light-card);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.6s ease;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amethyst), var(--brilliant-rose));
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  box-shadow: 0 8px 32px rgba(155, 93, 229, 0.4);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--aquamarine), var(--deep-sky-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.link-card {
+  background: var(--dark-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease backwards;
+}
+
+.light-mode .link-card {
+  background: var(--light-card);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.link-card::before,
+.link-card::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  height: 140%;
+  width: 70%;
+  transform: skewX(-8deg);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.link-card::before {
+  left: -75%;
+}
+
+.link-card::after {
+  right: -75%;
+}
+
+/* --- Start of Modulus Expansion (5n+b) --- */
+
+/* 1. Border-Color (The old separate blocks are now merged into this) */
+.link-card:nth-of-type(5n + 1) {
+  border-color: var(--amethyst);
+}
+
+.link-card:nth-of-type(5n + 2) {
+  border-color: var(--brilliant-rose);
+}
+
+.link-card:nth-of-type(5n + 3) {
+  border-color: var(--maize);
+}
+
+.link-card:nth-of-type(5n + 4) {
+  border-color: var(--deep-sky-blue);
+}
+
+.link-card:nth-of-type(5n + 5) {
+  border-color: var(--aquamarine);
+}
+
+/* 2. Pseudo-Element Background (The old separate blocks are now merged into this) */
+.link-card:nth-of-type(5n + 1)::before,
+.link-card:nth-of-type(5n + 1)::after {
+  background: var(--amethyst);
+}
+
+.link-card:nth-of-type(5n + 2)::before,
+.link-card:nth-of-type(5n + 2)::after {
+  background: var(--brilliant-rose);
+}
+
+.link-card:nth-of-type(5n + 3)::before,
+.link-card:nth-of-type(5n + 3)::after {
+  background: var(--maize);
+}
+
+.link-card:nth-of-type(5n + 4)::before,
+.link-card:nth-of-type(5n + 4)::after {
+  background: var(--deep-sky-blue);
+}
+
+.link-card:nth-of-type(5n + 5)::before,
+.link-card:nth-of-type(5n + 5)::after {
+  background: var(--aquamarine);
+}
+
+/* 3. Link Icon Background */
+.link-card:nth-of-type(5n + 1) .link-icon {
+  background: var(--amethyst);
+}
+
+.link-card:nth-of-type(5n + 2) .link-icon {
+  background: var(--brilliant-rose);
+}
+
+.link-card:nth-of-type(5n + 3) .link-icon {
+  background: var(--maize);
+}
+
+.link-card:nth-of-type(5n + 4) .link-icon {
+  background: var(--deep-sky-blue);
+}
+
+.link-card:nth-of-type(5n + 5) .link-icon {
+  background: var(--aquamarine);
+}
+
+/* --- End of Modulus Expansion --- */
+
+/* Animation Delays (These should still be discrete to create the staggered effect) */
+.link-card:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+
+.link-card:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.link-card:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+
+.link-card:nth-of-type(4) {
+  animation-delay: 0.4s;
+}
+
+.link-card:nth-of-type(5) {
+  animation-delay: 0.5s;
+}
+
+.link-card:nth-of-type(6) {
+  animation-delay: 0.6s;
+}
+
+.link-card:nth-of-type(7) {
+  animation-delay: 0.7s;
+}
+
+.link-card:hover::before {
+  left: -10px;
+}
+
+.link-card:hover::after {
+  right: -10px;
+}
+
+/* Dark text for light backgrounds (maize) - Only need 5n+3 now */
+.link-card:nth-of-type(5n + 3):hover .link-title,
+.link-card:nth-of-type(5n + 3):hover .link-description {
+  color: var(--text-light);
+}
+
+.light-mode .link-card:nth-of-type(5n + 3):hover .link-title,
+.light-mode .link-card:nth-of-type(5n + 3):hover .link-description {
+  color: var(--text-light);
+}
+
+.link-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.light-mode .link-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.link-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+/* The 7 blocks for .link-icon background are now above */
+
+.link-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.link-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.link-description {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.contact-card {
+  background: linear-gradient(135deg, var(--dark-card), var(--dark-card));
+  border-radius: 16px;
+  padding: 2rem;
+  border: 2px solid var(--aquamarine);
+  animation: fadeInUp 0.6s ease 0.8s backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.light-mode .contact-card {
+  background: var(--light-card);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--aquamarine), transparent);
+  opacity: 0.1;
+}
+
+.contact-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: rgba(0, 245, 212, 0.05);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: rgba(0, 245, 212, 0.1);
+  transform: translateX(8px);
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--aquamarine);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.contact-info a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    font-size: 2.5rem;
+  }
+
+  .link-card {
+    padding: 1.25rem;
+  }
+
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
+  }
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joran Quinten</title>
+
+    <meta name="description"
+        content="Joran Quinten - Leading in web tech. Love for front end. Coach, author & speaker. Connect with me on GitHub, LinkedIn, and more.">
+    <meta name="author" content="Joran Quinten">
+    <meta name="theme-color" content="#9b5de5">
+
+    <meta property="og:title" content="Joran Quinten - Web Tech Leader">
+    <meta property="og:description" content="Leading in web tech. Love for front end. Coach, author & speaker">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://joranquinten.nl">
+    <meta property="og:image"
+        content="https://images.ctfassets.net/mqwrag4of3hk/5PiZ5ylBATUyYoGtGTYsFG/7a2bb5ee69d88485031ca7c9b4b6076c/joran-quinten.jpeg">
+
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Joran Quinten",
+    "jobTitle": "Web Tech Leader",
+    "description": "Leading in web tech. Love for front end. Coach, author & speaker",
+    "url": "https://joranquinten.nl",
+    "sameAs": [
+        "https://github.com/joranquinten",
+        "https://linkedin.com/in/joranquinten"
+    ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span id="theme-icon">☀️</span>
+    </button>
+
+    <div class="container">
+        <header>
+            <div class="avatar">JQ</div>
+            <h1>Joran Quinten</h1>
+            <p class="tagline">Leading in web tech. Love for front end. Coach, author & speaker</p>
+        </header>
+
+        <div class="links-container">
+            <a href="https://joranquinten.nl" class="link-card" target="_blank" rel="noopener">
+                <div class="link-icon">🌐</div>
+                <div class="link-content">
+                    <div class="link-title">JoranQuinten.nl</div>
+                    <div class="link-description">My digital home on the web</div>
+                </div>
+            </a>
+
+            <a href="https://bistaweb.com" class="link-card" target="_blank" rel="noopener">
+                <div class="link-icon">🌴</div>
+                <div class="link-content">
+                    <div class="link-title">Bista Web</div>
+                    <div class="link-description">Where I build amazing things for clients on Bonaire</div>
+                </div>
+            </a>
+
+            <a href="https://qtnconsulting.nl" class="link-card" target="_blank" rel="noopener">
+                <div class="link-icon">🏢</div>
+                <div class="link-content">
+                    <div class="link-title">QTN Consulting</div>
+                    <div class="link-description">Freelance consulting services by me</div>
+                </div>
+            </a>
+
+            <a href="https://tapp.online" class="link-card" target="_blank" rel="noopener">
+                <div class="link-icon">🌱</div>
+                <div class="link-content">
+                    <div class="link-title">Tapp</div>
+                    <div class="link-description">Reducing eWaste in global transport</div>
+                </div>
+            </a>
+
+            <a href="https://fidashi.com" class="link-card" target="_blank" rel="noopener">
+                <div class="link-icon">🦊</div>
+                <div class="link-content">
+                    <div class="link-title">Fidashi</div>
+                    <div class="link-description">Better content through better feedback</div>
+                </div>
+            </a>
+
+            <a href="https://doorrekenen.nl" class="link-card" target="_blank" rel="noopener">
+                <div class="link-icon">🧮</div>
+                <div class="link-content">
+                    <div class="link-title">Doorrekenen.nl</div>
+                    <div class="link-description">Teaching Dutch kids the tables of multiplication</div>
+                </div>
+            </a>
+
+            <a href="https://github.com/joranquinten" class="link-card" target="_blank" rel="noopener">
+                <div class="link-icon">💻</div>
+                <div class="link-content">
+                    <div class="link-title">GitHub</div>
+                    <div class="link-description">Check out my code & projects</div>
+                </div>
+            </a>
+
+            <a href="https://linkedin.com/in/joranquinten" class="link-card" target="_blank" rel="noopener">
+                <div class="link-icon">💼</div>
+                <div class="link-content">
+                    <div class="link-title">LinkedIn</div>
+                    <div class="link-description">Let's connect professionally</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="contact-card">
+            <h2 class="contact-title">Get in Touch</h2>
+            <div class="contact-items">
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-info">
+                        <a href="mailto:joran@joranquinten.nl">joran@joranquinten.nl</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-info">
+                        Eindhoven area, Netherlands & Remote
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const THEME_KEY = 'themePreference';
+
+        /**
+         * Applies the given theme to the body and updates the icon.
+         * @param {'light' | 'dark'} theme 
+         */
+        function setTheme(theme) {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                icon.textContent = '🌙';
+            } else {
+                body.classList.remove('light-mode');
+                icon.textContent = '☀️';
+            }
+        }
+
+        /**
+         * Toggles the theme on button click and saves the preference to localStorage.
+         */
+        function toggleTheme() {
+            // Determine the current theme based on the class presence
+            const isLight = document.body.classList.contains('light-mode');
+            const newTheme = isLight ? 'dark' : 'light';
+
+            // Apply the new theme
+            setTheme(newTheme);
+
+            // Save the new preference
+            localStorage.setItem(THEME_KEY, newTheme);
+        }
+
+        /**
+         * Initial function to apply the stored or system theme on page load.
+         */
+        (function initTheme() {
+            const storedTheme = localStorage.getItem(THEME_KEY);
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+            let initialTheme;
+
+            if (storedTheme) {
+                // 1. User has a saved preference (e.g., from a previous session)
+                initialTheme = storedTheme;
+            } else if (prefersDark.matches) {
+                // 2. User has no saved preference, default to dark if OS is dark
+                initialTheme = 'dark';
+            } else {
+                // 3. User has no saved preference, default to light if OS is light
+                initialTheme = 'light';
+            }
+
+            setTheme(initialTheme);
+
+            // Optional: Listen for OS theme changes (e.g., if the user changes it while on the page)
+            // This only applies if they haven't manually set a preference (i.e., no storedTheme)
+            if (!storedTheme) {
+                prefersDark.addEventListener('change', (e) => {
+                    setTheme(e.matches ? 'dark' : 'light');
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
