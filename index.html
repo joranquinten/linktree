@@ -37,6 +37,8 @@
 </head>
 
 <body>
+    <canvas id="gradient-canvas" class="gradient"></canvas>
+    
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <span id="theme-icon">☀️</span>
     </button>
@@ -110,6 +112,14 @@
                 <div class="link-content">
                     <div class="link-title">LinkedIn</div>
                     <div class="link-description">Let's connect professionally</div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="link-card" target="_blank" rel="noopener">
+                <div class="link-icon">🔮</div>
+                <div class="link-content">
+                    <div class="link-title">Future</div>
+                    <div class="link-description">Predictions for the future of web development</div>
                 </div>
             </a>
         </div>
@@ -198,7 +208,16 @@
                 });
             }
         })();
+
+        // Initialize Stripe Gradient
+        window.addEventListener('DOMContentLoaded', function() {
+            const gradient = new Gradient();
+            gradient.el = document.getElementById('gradient-canvas');
+            gradient.connect();
+        });
     </script>
+
+    <script src="gradient.js"></script>
 </body>
 
 </html>
