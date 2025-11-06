@@ -52,6 +52,15 @@ class Gradient {
     this.resize();
     requestAnimationFrame(this.animate.bind(this));
     window.addEventListener("resize", this.resize.bind(this));
+    
+    // Pause animation when tab is not visible (performance optimization)
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        this.pause();
+      } else {
+        this.play();
+      }
+    });
   }
 
   initMesh() {
@@ -205,19 +214,28 @@ class Gradient {
     this.gl.uniform1f(this.uniforms.time, this.t);
     this.gl.uniform2f(this.uniforms.resolution, this.width, this.height);
     
-    // Parse colors
-    const parseColor = (colorString) => {
-      const match = colorString.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-      if (match) {
-        return [parseFloat(match[1]) / 255, parseFloat(match[2]) / 255, parseFloat(match[3]) / 255];
-      }
-      return [1, 1, 1];
-    };
+    // Parse colors (cached to avoid repeated parsing)
+    if (!this.parsedColors) {
+      const parseColor = (colorString) => {
+        const match = colorString.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+        if (match) {
+          return [parseFloat(match[1]) / 255, parseFloat(match[2]) / 255, parseFloat(match[3]) / 255];
+        }
+        return [1, 1, 1];
+      };
+      
+      this.parsedColors = [
+        parseColor(this.colors[0]),
+        parseColor(this.colors[1]),
+        parseColor(this.colors[2]),
+        parseColor(this.colors[3])
+      ];
+    }
     
-    this.gl.uniform3fv(this.uniforms.color1, parseColor(this.colors[0]));
-    this.gl.uniform3fv(this.uniforms.color2, parseColor(this.colors[1]));
-    this.gl.uniform3fv(this.uniforms.color3, parseColor(this.colors[2]));
-    this.gl.uniform3fv(this.uniforms.color4, parseColor(this.colors[3]));
+    this.gl.uniform3fv(this.uniforms.color1, this.parsedColors[0]);
+    this.gl.uniform3fv(this.uniforms.color2, this.parsedColors[1]);
+    this.gl.uniform3fv(this.uniforms.color3, this.parsedColors[2]);
+    this.gl.uniform3fv(this.uniforms.color4, this.parsedColors[3]);
     this.gl.uniform1f(this.uniforms.freqX, this.freqX);
     this.gl.uniform1f(this.uniforms.freqY, this.freqY);
     this.gl.uniform1f(this.uniforms.seed, this.seed);

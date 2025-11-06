@@ -4,20 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joran Quinten</title>
+    <title>Joran Quinten | Web Tech Leader | Netherlands</title>
 
+    <!-- SEO Meta Tags -->
     <meta name="description"
         content="Joran Quinten - Leading in web tech. Love for front end. Coach, author & speaker. Connect with me on GitHub, LinkedIn, and more.">
     <meta name="author" content="Joran Quinten">
+    <meta name="keywords" content="Joran Quinten, Web Development, Frontend Development, Web Tech Leader, JavaScript, TypeScript, Vue, Coaching, Netherlands, Eindhoven, Remote">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://joranquinten.nl">
     <meta name="theme-color" content="#9b5de5">
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Geographic Targeting -->
+    <meta name="geo.region" content="NL-NB">
+    <meta name="geo.placename" content="Eindhoven">
+    <meta name="geo.position" content="51.4416;5.4697">
+    <meta name="ICBM" content="51.4416, 5.4697">
+    
+    <!-- Language -->
+    <html lang="en">
+    <link rel="alternate" hreflang="en" href="https://joranquinten.nl">
+    
+    <!-- Performance: DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://images.ctfassets.net">
+    <link rel="preconnect" href="https://images.ctfassets.net" crossorigin>
+
+    <link rel="preconnect" href="https://images.ctfassets.net" crossorigin>
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:type" content="profile">
     <meta property="og:title" content="Joran Quinten - Web Tech Leader">
     <meta property="og:description" content="Leading in web tech. Love for front end. Coach, author & speaker">
-    <meta property="og:type" content="profile">
     <meta property="og:url" content="https://joranquinten.nl">
     <meta property="og:image"
         content="https://images.ctfassets.net/mqwrag4of3hk/5PiZ5ylBATUyYoGtGTYsFG/7a2bb5ee69d88485031ca7c9b4b6076c/joran-quinten.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Joran Quinten - Web Tech Leader">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Joran Quinten">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Joran Quinten - Web Tech Leader">
+    <meta name="twitter:description" content="Leading in web tech. Love for front end. Coach, author & speaker">
+    <meta name="twitter:image"
+        content="https://images.ctfassets.net/mqwrag4of3hk/5PiZ5ylBATUyYoGtGTYsFG/7a2bb5ee69d88485031ca7c9b4b6076c/joran-quinten.jpeg">
+    <meta name="twitter:image:alt" content="Joran Quinten - Web Tech Leader">
 
+    <!-- Structured Data (Enhanced) -->
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -26,14 +71,33 @@
     "jobTitle": "Web Tech Leader",
     "description": "Leading in web tech. Love for front end. Coach, author & speaker",
     "url": "https://joranquinten.nl",
+    "email": "joran@joranquinten.nl",
+    "image": "https://images.ctfassets.net/mqwrag4of3hk/5PiZ5ylBATUyYoGtGTYsFG/7a2bb5ee69d88485031ca7c9b4b6076c/joran-quinten.jpeg",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Eindhoven",
+        "addressRegion": "Noord-Brabant",
+        "addressCountry": "NL"
+    },
     "sameAs": [
         "https://github.com/joranquinten",
-        "https://linkedin.com/in/joranquinten"
-    ]
+        "https://linkedin.com/in/joranquinten",
+        "https://bistaweb.com",
+        "https://qtnconsulting.nl"
+    ],
+    "knowsAbout": ["Web Development", "Frontend Development", "JavaScript", "TypeScript", "Coaching", "Technical Leadership"],
+    "alumniOf": {
+        "@type": "Organization",
+        "name": "Web Technology"
+    }
     }
     </script>
 
+    <!-- Critical CSS loaded synchronously -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Preload gradient script for better performance -->
+    <link rel="preload" href="gradient.js" as="script">
 </head>
 
 <body>
@@ -209,15 +273,26 @@
             }
         })();
 
-        // Initialize Stripe Gradient
-        window.addEventListener('DOMContentLoaded', function() {
-            const gradient = new Gradient();
-            gradient.el = document.getElementById('gradient-canvas');
-            gradient.connect();
-        });
+        // Initialize Stripe Gradient (deferred and non-blocking)
+        function initGradient() {
+            if (typeof Gradient !== 'undefined') {
+                const gradient = new Gradient();
+                gradient.el = document.getElementById('gradient-canvas');
+                gradient.connect();
+            }
+        }
+        
+        // Use requestIdleCallback for non-critical gradient initialization
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(initGradient);
+        } else {
+            // Fallback for browsers that don't support requestIdleCallback
+            setTimeout(initGradient, 100);
+        }
     </script>
 
-    <script src="gradient.js"></script>
+    <!-- Load gradient script asynchronously (non-blocking) -->
+    <script src="gradient.js" defer></script>
 </body>
 
 </html>
