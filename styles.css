@@ -45,6 +45,15 @@
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
+@supports (animation-timeline: scroll()) {
+  .space-float {
+    animation: space-bob var(--duration, 6s) ease-in-out var(--delay, 0s) infinite, 
+               space-scroll-slide linear both;
+    animation-timeline: auto, scroll(root);
+    animation-range: auto, 0 var(--scroll-range, 200px);
+  }
+}
+
 .light-mode .space-float {
   opacity: 0.85;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
@@ -56,6 +65,18 @@
   }
   50% {
     transform: rotate(var(--rotate, 0deg)) translate(var(--x-end, 0px), var(--y-end, 0px));
+  }
+}
+
+@keyframes space-scroll-slide {
+  from {
+    translate: 0 0;
+    scale: 1;
+  }
+  to {
+    translate: calc(var(--slide-direction, -1) * 150vw) 0;
+    scale: 15;
+    opacity: 0;
   }
 }
 
