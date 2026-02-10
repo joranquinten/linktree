@@ -199,6 +199,15 @@ h1 {
   will-change: transform, box-shadow;
 }
 
+.link-card a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
 .light-mode .link-card {
   background: var(--light-card);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
